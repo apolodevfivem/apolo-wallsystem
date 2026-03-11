@@ -4,7 +4,6 @@ game "gta5"
 author "ApoloDev"
 
 client_scripts {
-    "config.lua",
     "client.lua"
 }
 

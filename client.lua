@@ -18,6 +18,7 @@ Citizen.CreateThread(function()
 end)
 
 RegisterNetEvent("Staff:ReceberInfos")
-AddEventHandler("Staff:ReceberInfos", function(Data)
+AddEventHandler("Staff:ReceberInfos", function(Status, Data)
+    WallAtivado = Status
     ServerInfos = Data
 end)
