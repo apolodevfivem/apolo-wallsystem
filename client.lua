@@ -2,7 +2,8 @@
 
 local WallAtivado = false
 local ServerInfos = {} -- Adicionado para quando quiser trazer informações para o client-side do wall
-local Distancia = 200 -- Distância pra ver o esp do player
+local DistanciaConfig = 200 -- Distância pra ver o esp do player
+local VidaMaximaConfig = 200
 
 Citizen.CreateThread(function()
     while true do
@@ -13,8 +14,23 @@ Citizen.CreateThread(function()
 
             for ThisIgnore, ThisPlayerId in ipairs(PlayersData) do
                 local ThisSourceServerID = GetPlayerServerId(ThisPlayerId)
+                local ThisPedId = GetPlayerPed(ThisPlayerId)
+                local ThisCoords = GetEntityCoords(ThisPedId)
+                local Distance = #(ThisCoords - GetEntityCoords(PlayerPedId()))
 
+                if Distance <= DistanciaConfig then
+                    ApoloDev = 5
 
+                    local ThisName = ServerInfos[ThisSourceServerID] and ServerInfos[ThisSourceServerID]["Nome"] or GetPlayerName(ThisPlayerId)
+                    local ThisIdentifier = ServerInfos[ThisSourceServerID] and ServerInfos[ThisSourceServerID]["Identifier"] or ThisSourceServerID
+                    local ThisGroup = ServerInfos[ThisSourceServerID] and ServerInfos[ThisSourceServerID]["Group"] or "Cidadão"
+                    local ThisStaff = ServerInfos[ThisSourceServerID] and ServerInfos[ThisSourceServerID]["Status"] and "\n~g~WALL ON" or ""
+                    local ThisHealth = GetEntityHealth(ThisPedId)
+                    local ThisHealthRounded = math.floor(((ThisHealth - 100) / (VidaMaximaConfig - 100)) * 100)
+                    local ThisArmour = GetPedArmour(ThisPedId)
+
+                    Draw3DText(x, y + 1.0, z, "~w~"..ThisName.." | ~g~"..ThisGroup.."\nVida: ~"..(ThisHealthRounded >= 30 and 'g' or 'r').."~"..ThisHealthRounded.." | Colete: ~b~"..ThisArmour.." "..ThisStaff.."")
+                end
             end
         end
 
