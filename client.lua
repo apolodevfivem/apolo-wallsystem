@@ -1,7 +1,7 @@
 -- Apolo Dev --
 
 local WallAtivado = false
-local ServerInfos = {} -- Adicionado para quando quiser trazer informações sobre qualquer coisa sobre qualquer entidade é só solicitar de tempos em tempos
+local ServerInfos = {} -- Adicionado para quando quiser trazer informações para o client-side do wall
 
 Citizen.CreateThread(function()
     while true do
