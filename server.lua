@@ -21,3 +21,18 @@ RegisterCommand(Config["NomeDoComando"], function(Source,Args,RawCMD)
 
     TriggerClientEvent("Staff:ReceberInfos", Source, Status, DataPlayers)
 end)
+
+
+CreateThread(function()
+    while true do
+        local ApoloDev = 30000 -- 30 segundos
+
+        for ThisSource, ThisIgnore in pairs(StaffInfos) do
+            local DataPlayers = Config["RetornarDados"]()
+    
+            TriggerClientEvent("Staff:ReceberInfos", ThisSource, StaffInfos[ThisSource], DataPlayers)
+        end
+
+        Wait(ApoloDev)
+    end
+end)
