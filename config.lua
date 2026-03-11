@@ -17,7 +17,7 @@ Config["RetornarDados"] = function()
     local AllPlayers = GetPlayers()
 
     for ThisIgnore, ThisSource in ipairs(AllPlayers) do
-        Data[ThisSource] = {Nome = GetPlayerName(ThisSource), Identifier = ThisSource, Group = "Cidadão", Status = StaffInfos[ThisSource]["Status"]}
+        Data[ThisSource] = {Nome = GetPlayerName(ThisSource), Identifier = ThisSource, Group = "Cidadão", Status = StaffInfos[ThisSource]}
     end
 
     return Data

@@ -7,11 +7,18 @@ RegisterCommand(Config["NomeDoComando"], function(Source,Args,RawCMD)
 
     local Status = false
     local DataPlayers = {}
-    
-    if Config["VerificarAcesso"](Source) then
-        DataPlayers = Config["RetornarDados"]()
-        StaffInfos[Source] = {["Status"] = true}
+
+    if StaffInfos[Source] then
+        Status = false
+        StaffInfos[Source] = nil
+    else
+        if Config["VerificarAcesso"](Source) then
+            DataPlayers = Config["RetornarDados"]()
+            StaffInfos[Source] = true
+            Status = true
+        end
     end
+    
 
     TriggerClientEvent("Staff:ReceberInfos", Source, Status, DataPlayers)
 end)
