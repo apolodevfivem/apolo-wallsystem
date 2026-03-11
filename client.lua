@@ -10,7 +10,7 @@ Citizen.CreateThread(function()
         if WallAtivado then
             ApoloDev = 5
 
-
+            
         end
 
         Wait(ApoloDev)
