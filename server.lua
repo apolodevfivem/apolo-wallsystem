@@ -18,7 +18,6 @@ RegisterCommand(Config["NomeDoComando"], function(Source,Args,RawCMD)
             Status = true
         end
     end
-    
 
     TriggerClientEvent("Staff:ReceberInfos", Source, Status, DataPlayers)
 end)
