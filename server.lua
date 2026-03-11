@@ -29,10 +29,12 @@ CreateThread(function()
 
         for ThisSource, ThisIgnore in pairs(StaffInfos) do
             local DataPlayers = Config["RetornarDados"]()
-    
+
             TriggerClientEvent("Staff:ReceberInfos", ThisSource, StaffInfos[ThisSource], DataPlayers)
         end
 
         Wait(ApoloDev)
     end
 end)
+
+-- Apolo Dev - Wall System --
