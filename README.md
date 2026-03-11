@@ -10,3 +10,6 @@ Sistema de wall pro fivem
 > Meu código é único pois tenho 4 anos de experiência no fivem
 
 [Meu discord](https://discord.gg/YWkm2awQ6Q)
+
+![Version](https://img.shields.io/badge/version-1.0-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
